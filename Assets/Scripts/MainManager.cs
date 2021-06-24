@@ -36,6 +36,7 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+        AddPoint(0);
     }
 
     private void Update()
@@ -65,7 +66,9 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        string playername = GameManager.Instance!= null ? GameManager.Instance.playerName : "";
+
+        ScoreText.text = $"Score : {m_Points} : ({playername})";
     }
 
     public void GameOver()
